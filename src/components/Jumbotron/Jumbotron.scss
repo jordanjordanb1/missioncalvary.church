@@ -1,4 +1,66 @@
 .jumbotron {
+  position: relative;
   background: rgb(30, 30, 30);
   height: 100vh;
+  color: white;
+
+  .org-name {
+    h2 {
+      position: relative;
+      font-size: 0.8em;
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-weight: 400;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+
+      &::before {
+        position: absolute;
+        top: 49%;
+        right: -170px;
+        content: '';
+        width: 45%;
+        height: 1px;
+        background: #fff;
+      }
+
+      &::after {
+        position: absolute;
+        top: 49%;
+        left: -180px;
+        content: '';
+        width: 45%;
+        height: 1px;
+        background: #fff;
+      }
+    }
+  }
+
+  .message {
+    font-size: 6em;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: 10px;
+    font-family: 'Lora', Georgia, serif;
+    text-shadow: 1px 1px 1px rgba(10, 10, 10, 0.4);
+  }
+
+  .blockquote {
+    text-shadow: 1px 1px 1px rgba(10, 10, 10, 0.1);
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .jumbotron {
+    .message {
+      font-size: 5em;
+    }
+  }
+}
+
+@media screen and (max-width: 501px) {
+  .jumbotron {
+    .message {
+      font-size: 4em;
+    }
+  }
 }
