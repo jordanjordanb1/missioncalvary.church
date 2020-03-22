@@ -10,7 +10,9 @@ const HomeLayout = ({ children }) => {
     <>
       <Header />
       <Jumbotron />
-      <Container as="main">{children}</Container>
+      <Container fluid as="main" className="p-0">
+        {children}
+      </Container>
       <Footer />
     </>
   )
