@@ -23,35 +23,39 @@ export default function Header() {
     [textColor, setTextColor] = useState('rgb(255, 255, 255)')
 
   useEffect(() => {
-    document.addEventListener('scroll', () => {
-      const y = window.scrollY
+    document.addEventListener(
+      'scroll',
+      () => {
+        const y = window.scrollY
 
-      if (y <= 30) {
-        setBackground('none')
-        setNavHeight('100px')
-        setTextColor('rgb(255, 255, 255)')
-      } else if (y >= 31 && y <= 50) {
-        setBackground('rgba(255, 255, 255, 0.2)')
-        setNavHeight('100px')
-        setTextColor('rgb(205, 205, 205)')
-      } else if (y >= 51 && y <= 70) {
-        setBackground('rgba(255, 255, 255, 0.4)')
-        setNavHeight('80px')
-        setTextColor('rgb(145, 145, 145)')
-      } else if (y >= 71 && y <= 90) {
-        setBackground('rgba(255, 255, 255, 0.6)')
-        setNavHeight('70px')
-        setTextColor('rgb(85, 85, 85)')
-      } else if (y >= 91 && y <= 110) {
-        setBackground('rgba(255, 255, 255, 0.8)')
-        setNavHeight('60px')
-        setTextColor('rgb(25, 25, 25)')
-      } else if (y >= 111) {
-        setBackground('rgba(255, 255, 255, 1)')
-        setNavHeight('50px')
-        setTextColor('rgb(0, 0, 0)')
-      }
-    })
+        if (y <= 30) {
+          setBackground('none')
+          setNavHeight('100px')
+          setTextColor('rgb(255, 255, 255)')
+        } else if (y >= 31 && y <= 50) {
+          setBackground('rgba(255, 255, 255, 0.2)')
+          setNavHeight('100px')
+          setTextColor('rgb(205, 205, 205)')
+        } else if (y >= 51 && y <= 70) {
+          setBackground('rgba(255, 255, 255, 0.4)')
+          setNavHeight('80px')
+          setTextColor('rgb(145, 145, 145)')
+        } else if (y >= 71 && y <= 90) {
+          setBackground('rgba(255, 255, 255, 0.6)')
+          setNavHeight('70px')
+          setTextColor('rgb(85, 85, 85)')
+        } else if (y >= 91 && y <= 110) {
+          setBackground('rgba(255, 255, 255, 0.8)')
+          setNavHeight('60px')
+          setTextColor('rgb(25, 25, 25)')
+        } else if (y >= 111) {
+          setBackground('rgba(255, 255, 255, 1)')
+          setNavHeight('50px')
+          setTextColor('rgb(0, 0, 0)')
+        }
+      },
+      { passive: true }
+    )
   })
 
   return (
