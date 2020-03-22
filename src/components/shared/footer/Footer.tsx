@@ -39,6 +39,7 @@ export default function Footer() {
                   className="d-flex justify-content-center align-items-center"
                 >
                   <i className="fab fa-instagram"></i>
+                  <span className="sr-only">Instagram</span>
                 </a>
               </li>
               <li className="list-inline-item m-2">
@@ -49,6 +50,7 @@ export default function Footer() {
                   className="d-flex justify-content-center align-items-center"
                 >
                   <i className="fab fa-facebook-f"></i>
+                  <span className="sr-only">Facebook</span>
                 </a>
               </li>
               <li className="list-inline-item m-2">
@@ -57,6 +59,7 @@ export default function Footer() {
                   className="d-flex justify-content-center align-items-center"
                 >
                   <i className="fas fa-envelope"></i>
+                  <span className="sr-only">Email</span>
                 </a>
               </li>
             </ul>
@@ -91,7 +94,11 @@ export default function Footer() {
 
               <Col xs="12" lg="5" className="text-lg-left p-0">
                 Made with ❤️ by{' '}
-                <a target="_blank" href="https://jordanbarbosa.com">
+                <a
+                  href="https://jordanbarbosa.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Jordan Barbosa
                 </a>
               </Col>
