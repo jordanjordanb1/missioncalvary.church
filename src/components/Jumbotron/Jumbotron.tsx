@@ -23,7 +23,7 @@ export default function Jumbotron() {
   return (
     <JumbotronBootstrap
       fluid
-      className="d-flex justify-content-center align-items-center"
+      className="d-flex justify-content-center align-items-center m-0"
     >
       <Img
         fluid={data.file.child.fluid}
