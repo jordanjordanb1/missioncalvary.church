@@ -33,6 +33,10 @@ module.exports = {
       options: {
         fonts: [
           {
+            family: `Great Vibes`,
+            variants: [`400`, `600`]
+          },
+          {
             family: `Open Sans`,
             variants: [`300`, `400`, `600`, `700`]
           },
