@@ -1,6 +1,20 @@
+.navbar.not-scrolled {
+  background: white !important;
+
+  .navbar-toggler {
+    color: black !important;
+  }
+
+  a {
+    color: black !important;
+  }
+}
+
 .navbar {
   font-family: 'Open Sans', Arial, sans-serif;
   text-transform: uppercase;
+  width: 100vw;
+  transition: all 0.2s ease-in-out 0s;
 
   .navbar-brand {
     height: 100px;

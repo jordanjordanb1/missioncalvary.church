@@ -20,46 +20,69 @@ export default function Header() {
     `),
     [background, setBackground] = useState('none'),
     [navHeight, setNavHeight] = useState('100px'),
-    [textColor, setTextColor] = useState('rgb(255, 255, 255)')
+    [textColor, setTextColor] = useState('rgb(255, 255, 255)'),
+    [navShadow, setNavShadow] = useState('5px 5px -2px 0 rgba(0,0,0,.3)'),
+    [scrolled, setScrolled] = useState(false),
+    [extended, setExtended] = useState(false)
 
   useEffect(() => {
-    document.addEventListener(
-      'scroll',
-      () => {
-        const y = window.scrollY
+    ;['scroll', 'touchstart'].forEach(e =>
+      window.addEventListener(
+        e,
+        () => {
+          const y = window.scrollY
 
-        if (y <= 30) {
-          setBackground('none')
-          setNavHeight('100px')
-          setTextColor('rgb(255, 255, 255)')
-        } else if (y >= 31 && y <= 50) {
-          setBackground('rgba(255, 255, 255, 0.2)')
-          setNavHeight('100px')
-          setTextColor('rgb(205, 205, 205)')
-        } else if (y >= 51 && y <= 70) {
-          setBackground('rgba(255, 255, 255, 0.4)')
-          setNavHeight('80px')
-          setTextColor('rgb(145, 145, 145)')
-        } else if (y >= 71 && y <= 90) {
-          setBackground('rgba(255, 255, 255, 0.6)')
-          setNavHeight('70px')
-          setTextColor('rgb(85, 85, 85)')
-        } else if (y >= 91 && y <= 110) {
-          setBackground('rgba(255, 255, 255, 0.8)')
-          setNavHeight('60px')
-          setTextColor('rgb(25, 25, 25)')
-        } else if (y >= 111) {
-          setBackground('rgba(255, 255, 255, 1)')
-          setNavHeight('50px')
-          setTextColor('rgb(0, 0, 0)')
-        }
-      },
-      { passive: true }
+          if (y <= 30) {
+            setBackground('none')
+            setNavHeight('100px')
+            setTextColor('rgb(255, 255, 255)')
+            setNavShadow('0 0 0 0 rgba(0,0,0,0)')
+            setScrolled(false)
+          } else if (y >= 31 && y <= 50) {
+            setBackground('rgba(255, 255, 255, 0.2)')
+            setNavHeight('100px')
+            setTextColor('rgb(205, 205, 205)')
+            setNavShadow('rgba(0, 0, 0, .1) 0px 1px 1px -2px')
+            setScrolled(true)
+          } else if (y >= 51 && y <= 70) {
+            setBackground('rgba(255, 255, 255, 0.4)')
+            setNavHeight('80px')
+            setTextColor('rgb(145, 145, 145)')
+            setNavShadow('rgba(0, 0, 0, .15) 0px 2px 2px -2px')
+            setScrolled(true)
+          } else if (y >= 71 && y <= 90) {
+            setBackground('rgba(255, 255, 255, 0.6)')
+            setNavHeight('70px')
+            setTextColor('rgb(85, 85, 85)')
+            setNavShadow('rgba(0, 0, 0, .2) 0px 3px 3px -2px')
+            setScrolled(true)
+          } else if (y >= 91 && y <= 110) {
+            setBackground('rgba(255, 255, 255, 0.8)')
+            setNavHeight('60px')
+            setTextColor('rgb(25, 25, 25)')
+            setNavShadow('rgba(0, 0, 0, .25) 0px 4px 4px -2px')
+            setScrolled(true)
+          } else if (y >= 111) {
+            setBackground('rgba(255, 255, 255, 1)')
+            setNavHeight('50px')
+            setTextColor('rgb(0, 0, 0)')
+            setNavShadow('rgba(0, 0, 0, .3) 0px 5px 5px -2px')
+            setScrolled(true)
+          }
+        },
+        { passive: true }
+      )
     )
   })
 
   return (
-    <Navbar expand="lg" fixed="top" style={{ background }} className="p-0">
+    <Navbar
+      expand="lg"
+      fixed="top"
+      style={{ background, boxShadow: navShadow }}
+      className={extended && !scrolled ? 'not-scrolled p-1' : 'p-1'}
+      collapseOnSelect={true}
+    >
       <Container>
         <Navbar.Brand
           as={Link}
@@ -75,10 +98,12 @@ export default function Header() {
 
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
+          className="mr-4 pt-2 pb-2"
           label="MENU"
           style={{ color: textColor }}
+          onClick={() => setExtended(!extended)}
         >
-          <i className="fas fa-bars"></i>&nbsp; MENU
+          MENU <i className="fas fa-bars"></i>
         </Navbar.Toggle>
 
         <Navbar.Collapse>
