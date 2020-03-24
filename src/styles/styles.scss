@@ -12,3 +12,16 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes show {
+  0% {
+    padding: 0;
+    max-height: 0px;
+    opacity: 0;
+  }
+  100% {
+    padding: 10px;
+    max-height: 50px;
+    opacity: 1;
+  }
+}
