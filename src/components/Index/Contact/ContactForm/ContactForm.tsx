@@ -51,10 +51,11 @@ export default function ContactForm() {
 
           const data = { name, phone, message }
 
-          Axios.post(
-            `https://getform.io/f/${process.env.GETFORM_API}`,
-            data
-          ).then(res => setFormSent(true))
+          Axios.post(`//localhost:3001/api/contact`, data).then(res => {
+            setFormSent(true)
+            console.log(res)
+            return true
+          })
 
           setSubmitting(false)
         }}
