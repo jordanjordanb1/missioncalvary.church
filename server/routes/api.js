@@ -1,4 +1,7 @@
 const express = require('express'),
-  router = express.Router();
+  router = express.Router(),
+  contactRoute = require('./api/contact')
+
+router.use('/contact', contactRoute)
 
 module.exports = router;
