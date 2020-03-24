@@ -3,7 +3,9 @@
   "description": "This is a website for Mission Calvary Church",
   "version": "0.1.0",
   "author": "Jordan Barbosa <jordansbarbosa01@gmail.com>",
+  "proxy": "localhost:3001",
   "dependencies": {
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "formik": "^2.1.4",
     "gatsby": "^2.19.43",
@@ -26,6 +28,7 @@
     "yup": "^0.28.3"
   },
   "devDependencies": {
+    "concurrently": "^5.1.0",
     "prettier": "^1.19.1"
   },
   "keywords": [
@@ -38,6 +41,8 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "server": "cd server && npm run server",
+    "dev": "concurrently --kill-others-on-fail \"npm run develop\" \"npm run server\""
   }
 }
