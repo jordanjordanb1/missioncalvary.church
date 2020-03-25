@@ -2,7 +2,7 @@ import React from 'react'
 import './Contact.scss'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import ContactForm from './ContactForm/ContactForm'
+import ContactForm from './Form/Form'
 
 export default function Contact() {
   return (

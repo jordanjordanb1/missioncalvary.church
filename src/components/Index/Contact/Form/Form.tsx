@@ -7,9 +7,13 @@ import Button from 'react-bootstrap/Button'
 import FormGroup from 'react-bootstrap/FormGroup'
 import Label from 'react-bootstrap/FormLabel'
 import Alert from 'react-bootstrap/Alert'
-import Axios from 'axios'
-import './ContactForm.scss'
+import './Form.scss'
 import emailjs from 'emailjs-com'
+
+/* TODO:
+//  1: Add loading animation when sending form
+//  2: Display error messages on form error
+*/
 
 export default function ContactForm() {
   const [formSent, setFormSent] = useState(false)
@@ -65,7 +69,7 @@ export default function ContactForm() {
               'user_RIzlwycFLC1SvffqaKkTs'
             )
             .then(
-              res => console.log(res),
+              res => setFormSent(true),
               err => console.error(err)
             )
 
