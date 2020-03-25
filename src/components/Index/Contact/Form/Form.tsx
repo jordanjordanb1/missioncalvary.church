@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import * as Yup from 'yup'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form } from 'formik'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import FormGroup from 'react-bootstrap/FormGroup'
-import Label from 'react-bootstrap/FormLabel'
-import Alert from 'react-bootstrap/Alert'
-import './Form.scss'
 import emailjs from 'emailjs-com'
+import InputGroup from './InputGroup/InputGroup'
 
 /* TODO:
 //  1: Add loading animation when sending form
@@ -32,7 +30,7 @@ export default function ContactForm() {
         .required('Phone number is required'),
       message: Yup.string()
         .min(3, 'Message is not valid')
-        .max(250, 'Message is too long')
+        .max(500, 'Message is too long')
         .required('Message is required'),
     }),
   })
@@ -85,89 +83,36 @@ export default function ContactForm() {
                 lg={{ span: 8, offset: 2 }}
               >
                 {/* === NAME === */}
-                <FormGroup>
-                  <ErrorMessage name="contact.name">
-                    {msg => (
-                      <Alert
-                        className="mb-3 form-error text-center"
-                        variant="danger"
-                      >
-                        {msg}
-                      </Alert>
-                    )}
-                  </ErrorMessage>
-
-                  <Label htmlFor="contact.name" className="sr-only">
-                    Your name
-                  </Label>
-
-                  <Field
-                    className="form-control"
-                    disabled={isSubmitting}
-                    type="text"
-                    name="contact.name"
-                    id="contact.name"
-                    value={contact.name}
-                    placeholder="Your name..."
-                  />
-                </FormGroup>
+                <InputGroup
+                  type="text"
+                  formName="contact"
+                  name="name"
+                  isSubmitting={isSubmitting}
+                  value={contact.name}
+                  placeHolder="Your name..."
+                />
 
                 {/* === PHONE === */}
-                <FormGroup>
-                  <ErrorMessage name="contact.phone">
-                    {msg => (
-                      <Alert
-                        className="mb-3 form-error text-center"
-                        variant="danger"
-                      >
-                        {msg}
-                      </Alert>
-                    )}
-                  </ErrorMessage>
-
-                  <Label htmlFor="contact.phone" className="sr-only">
-                    Your phone number
-                  </Label>
-
-                  <Field
-                    className="form-control"
-                    disabled={isSubmitting}
-                    type="tel"
-                    name="contact.phone"
-                    id="contact.phone"
-                    value={contact.phone}
-                    placeholder="Your phone number..."
-                  />
-                </FormGroup>
+                <InputGroup
+                  type="text"
+                  formName="contact"
+                  name="phone"
+                  isSubmitting={isSubmitting}
+                  value={contact.phone}
+                  placeHolder="Your phone number..."
+                />
 
                 {/* === MESSAGE === */}
-                <FormGroup className="mb-4">
-                  <ErrorMessage name="contact.message">
-                    {msg => (
-                      <Alert
-                        className="mb-3 form-error text-center"
-                        variant="danger"
-                      >
-                        {msg}
-                      </Alert>
-                    )}
-                  </ErrorMessage>
-
-                  <Label htmlFor="contact.message" className="sr-only">
-                    Your message
-                  </Label>
-
-                  <Field
-                    className="form-control"
-                    disabled={isSubmitting}
-                    name="contact.message"
-                    id="contact.message"
-                    component="textarea"
-                    rows="5"
-                    value={contact.message}
-                    placeholder="Your message..."
-                  />
-                </FormGroup>
+                <InputGroup
+                  type="textarea"
+                  formName="contact"
+                  name="message"
+                  isSubmitting={isSubmitting}
+                  value={contact.message}
+                  placeHolder="Your message..."
+                  component="textarea"
+                  rows="5"
+                />
 
                 <FormGroup className="mb-4">
                   <Button
