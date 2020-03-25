@@ -6,6 +6,10 @@ import { Link, graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import './Header.scss'
 
+/* FIXME:
+// 1. Navbar doesn't collapse on Link click
+*/
+
 export default function Header() {
   const data = useStaticQuery(graphql`
       {
