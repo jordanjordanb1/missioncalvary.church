@@ -9,6 +9,7 @@ import Label from 'react-bootstrap/FormLabel'
 import Alert from 'react-bootstrap/Alert'
 import Axios from 'axios'
 import './ContactForm.scss'
+import emailjs from 'emailjs-com'
 
 export default function ContactForm() {
   const [formSent, setFormSent] = useState(false)
@@ -49,13 +50,24 @@ export default function ContactForm() {
         ) => {
           setSubmitting(true)
 
-          const data = { name, phone, message }
+          const template_params = {
+            from_name: `${name}`,
+            name: `${name}`,
+            phone: `${phone}`,
+            message: `${message}`,
+          }
 
-          Axios.post(`//localhost:3001/api/contact`, data).then(res => {
-            setFormSent(true)
-            console.log(res)
-            return true
-          })
+          emailjs
+            .send(
+              'default_service',
+              'template_0za42WL7',
+              template_params,
+              'user_RIzlwycFLC1SvffqaKkTs'
+            )
+            .then(
+              res => console.log(res),
+              err => console.error(err)
+            )
 
           setSubmitting(false)
         }}
