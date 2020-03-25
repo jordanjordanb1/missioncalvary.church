@@ -120,15 +120,6 @@ export default function Header() {
 
             <Nav.Link
               as={Link}
-              className="m-lg-2"
-              style={{ color: textColor }}
-              to="#location"
-            >
-              Location
-            </Nav.Link>
-
-            <Nav.Link
-              as={Link}
               activeClassName="active"
               className="m-lg-2"
               style={{ color: textColor }}
