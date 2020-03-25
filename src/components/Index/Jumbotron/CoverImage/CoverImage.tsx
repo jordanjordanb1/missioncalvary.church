@@ -20,13 +20,6 @@ export default function CoverImage() {
     <div className="cover-image">
       <Img
         fluid={data.file.child.fluid}
-        style={{
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-          top: '0',
-          left: 0,
-        }}
       />
     </div>
   )
