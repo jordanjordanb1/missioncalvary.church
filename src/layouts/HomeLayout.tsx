@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import Container from 'react-bootstrap/Container'
 import Footer from '../components/shared/footer/Footer'
 import Header from '../components/shared/header/Header'
-import Jumbotron from '../components/Index/Jumbotron/Jumbotron'
+import Jumbotron from '../components/shared/Jumbotron/Jumbotron'
 
-const HomeLayout = ({ children }) => {
+const HomeLayout = ({ children }: any) => {
   return (
     <>
       <Header />
-      <Jumbotron />
       <Container fluid as="main" className="p-0">
+        <Jumbotron homePage={true} />
         {children}
       </Container>
       <Footer />
