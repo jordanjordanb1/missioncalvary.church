@@ -2,7 +2,7 @@
   "name": "website-for-mcc",
   "description": "This is a website for Mission Calvary Church",
   "version": "0.1.0",
-  "author": "Jordan Barbosa",
+  "author": "Jordan Barbosa <jordansbarbosa01@gmail.com>",
   "proxy": "localhost:3001",
   "dependencies": {
     "bootstrap": "^4.4.1",
