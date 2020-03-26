@@ -1,10 +1,14 @@
 import React from 'react'
 import './Image.scss'
 
-export default function Image() {
+interface ImageProps {
+  imgSrc: string
+}
+
+export default function Image({ imgSrc }: ImageProps) {
   return (
     <div className="about-image d-flex justify-content-center align-items-center">
-      <img src="https://dummyimage.com/600x400/000/fff" alt="Fake img" />
+      <img src={imgSrc} alt="Fake img" />
     </div>
   )
 }

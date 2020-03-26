@@ -4,17 +4,22 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from './Image/Image'
 
-export default function About() {
+interface AboutProps {
+  header: string
+  imgSrc: string
+}
+
+export default function About({ header, imgSrc }: AboutProps) {
   return (
     <Row as="section" className="about" style={{ background: 'white' }}>
       <Col xs="12" lg="4">
-        <Image />
+        <Image imgSrc={imgSrc} />
       </Col>
       <Col xs="12" lg="8" className="p-2 d-flex align-items-center text-center">
         <div className="about-wrapper">
           <Row noGutters>
             <Col xs="12" lg={{ span: 6, offset: 3 }}>
-              <h1>Who we are</h1>
+              <h1>{header}</h1>
             </Col>
           </Row>
 
