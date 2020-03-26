@@ -4,10 +4,12 @@ import Layout from '../layouts/Layout'
 import SEO from "../components/shared/seo"
 
 const NotFoundPage = () => (
-  <Layout>
+  <Layout
+    homePage={false}
+    imgName={'none'}
+    message={'404 ERROR'}
+    bibleVerse={'The page was not found!'}>
     <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
   </Layout>
 )
 
