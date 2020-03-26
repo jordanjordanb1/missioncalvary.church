@@ -5,7 +5,12 @@ import About from '../components/shared/About/About'
 
 export default function AboutPage() {
   return (
-    <Layout>
+    <Layout
+      homePage={false}
+      imgName={'aboutus.jpg'}
+      message={'About us'}
+      bibleVerse={'This is just about us'}
+    >
       <SEO title="About" />
       <About
         header="About us"
