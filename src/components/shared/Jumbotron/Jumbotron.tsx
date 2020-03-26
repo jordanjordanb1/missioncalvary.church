@@ -24,7 +24,11 @@ export default function Jumbotron({
   if (!homePage) {
     return (
       <>
-        <CoverImage imgName={imgName || 'jumbtron.jpg'} />
+        {imgName !== 'none' ? (
+          <CoverImage imgName={imgName || 'jumbtron.jpg'} />
+        ) : (
+          ''
+        )}
         <JumbotronBootstrap
           fluid
           className="d-flex justify-content-center align-items-center m-0"
@@ -39,14 +43,18 @@ export default function Jumbotron({
                     <Col xs="12" lg={{ span: 8, offset: 2 }}>
                       <blockquote className="blockquote">
                         <p className="mb-0 text-center">{bibleVerse}</p>
-                        <footer className="blockquote-footer text-right">
-                          <cite
-                            className="mr-3"
-                            style={{ color: 'rgba(255, 255, 255, 0.6)' }}
-                          >
-                            {bibleLocation}
-                          </cite>
-                        </footer>
+                        {bibleLocation ? (
+                          <footer className="blockquote-footer text-right">
+                            <cite
+                              className="mr-3"
+                              style={{ color: 'rgba(255, 255, 255, 0.6)' }}
+                            >
+                              {bibleLocation}
+                            </cite>
+                          </footer>
+                        ) : (
+                          ''
+                        )}
                       </blockquote>
                     </Col>
                   </Row>
