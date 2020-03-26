@@ -10,9 +10,15 @@ interface SectionProps {
   header: string
   imgSrc: string
   imgSide: imgSide
+  message: string
 }
 
-export default function Section({ header, imgSrc, imgSide }: SectionProps) {
+export default function Section({
+  header,
+  imgSrc,
+  imgSide,
+  message,
+}: SectionProps) {
   return (
     <Row as="section" className="about" style={{ background: 'white' }}>
       <Col
@@ -35,24 +41,7 @@ export default function Section({ header, imgSrc, imgSide }: SectionProps) {
 
           <Row>
             <Col xs="12" className="pr-5 pl-5">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-                perferendis temporibus commodi quidem magnam ullam corrupti
-                voluptas rerum, accusantium nihil expedita sit, velit eveniet
-                sequi quo? Recusandae temporibus consequuntur dolorum. Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Odit
-                perferendis temporibus commodi quidem magnam ullam corrupti
-                voluptas rerum, accusantium nihil expedita sit, velit eveniet
-                sequi quo? Recusandae temporibus consequuntur dolorum. Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Odit
-                perferendis temporibus commodi quidem magnam ullam corrupti
-                voluptas rerum, accusantium nihil expedita sit, velit eveniet
-                sequi quo? Recusandae temporibus consequuntur dolorum. Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Odit
-                perferendis temporibus commodi quidem magnam ullam corrupti
-                voluptas rerum, accusantium nihil expedita sit, velit eveniet
-                sequi quo? Recusandae temporibus consequuntur dolorum.
-              </p>
+              <p>{message}</p>
             </Col>
           </Row>
         </div>
