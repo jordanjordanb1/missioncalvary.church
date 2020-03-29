@@ -6,7 +6,6 @@ export default function AboutPage() {
   return (
     <Layout
       type={'small'}
-      imgName={'none'}
       message={'Events'}
       bibleVerse={'Currently being built!'}
     >
