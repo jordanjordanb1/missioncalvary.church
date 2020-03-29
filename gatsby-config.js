@@ -21,8 +21,8 @@ module.exports = {
         name: `Mission Calvary Church`,
         short_name: `MCC`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#1b1919`,
+        theme_color: `#1b1919`,
         display: `minimal-ui`
       },
     },
