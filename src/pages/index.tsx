@@ -24,7 +24,7 @@ const message = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
                 sequi quo? Recusandae temporibus consequuntur dolorum.`
 
 const IndexPage = () => (
-  <Layout homePage={true}>
+  <Layout type={'homepage'}>
     <SEO title="Home" />
     <Section
       header="Who are we?"

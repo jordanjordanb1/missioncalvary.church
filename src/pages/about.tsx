@@ -23,7 +23,7 @@ const message = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
 export default function AboutPage() {
   return (
     <Layout
-      homePage={false}
+      type={'full'}
       imgName={'aboutus.jpg'}
       message={'About us'}
       bibleVerse={'This is just about us'}

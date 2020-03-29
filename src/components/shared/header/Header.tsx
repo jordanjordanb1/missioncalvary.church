@@ -147,16 +147,6 @@ export default function Header() {
               activeClassName="active"
               className="m-lg-2"
               style={{ color: textColor }}
-              to="/pastors"
-            >
-              Pastors
-            </Nav.Link>
-
-            <Nav.Link
-              as={Link}
-              activeClassName="active"
-              className="m-lg-2"
-              style={{ color: textColor }}
               to="/contact"
             >
               Contact

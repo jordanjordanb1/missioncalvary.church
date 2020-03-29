@@ -4,8 +4,10 @@ import Footer from '../components/shared/footer/Footer'
 import Header from '../components/shared/header/Header'
 import Jumbotron from '../components/shared/Jumbotron/Jumbotron'
 
+type JumbotronType = 'full' | 'small' | 'homepage'
+
 interface LayoutProps {
-  homePage: boolean
+  type: JumbotronType
   imgName?: string
   message?: string
   bibleVerse?: string
@@ -15,7 +17,7 @@ interface LayoutProps {
 
 const Layout = ({
   children,
-  homePage,
+  type,
   imgName,
   message,
   bibleVerse,
@@ -26,7 +28,7 @@ const Layout = ({
       <Header />
       <Container fluid as="main" className="p-0">
         <Jumbotron
-          homePage={homePage}
+          type={type}
           imgName={imgName}
           message={message}
           bibleVerse={bibleVerse}
