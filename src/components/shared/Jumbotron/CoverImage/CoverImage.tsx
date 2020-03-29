@@ -13,7 +13,7 @@ export default function CoverImage({ imgName }: CoverImageProps) {
       files: allFile(filter: { relativeDirectory: { eq: "jumbotron" } }) {
         nodes {
           child: childImageSharp {
-            fluid(maxHeight: 1080, maxWidth: 1920) {
+            fluid(maxHeight: 1440, maxWidth: 2560) {
               aspectRatio
               sizes
               src
