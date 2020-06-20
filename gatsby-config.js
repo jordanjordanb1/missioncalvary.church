@@ -23,28 +23,23 @@ module.exports = {
         start_url: `/`,
         background_color: `#1b1919`,
         theme_color: `#1b1919`,
-        display: `minimal-ui`
+        display: `minimal-ui`,
       },
     },
     `gatsby-plugin-sass`,
     `gatsby-plugin-typescript`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-web-font-loader`,
       options: {
-        fonts: [
-          {
-            family: `Great Vibes`,
-            variants: [`400`, `600`]
-          },
-          {
-            family: `Open Sans`,
-            variants: [`300`, `400`, `600`, `700`]
-          },
-          {
-            family: `Lora`,
-            variants: [`400`, `700`]
-          },
-        ],
+        google: {
+          families: [`Great Vibes:400,600`, `Open Sans:300,400,600,700`, `Lora:400,700`],
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        pure: true,
       },
     },
   ],
