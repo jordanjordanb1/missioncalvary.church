@@ -9,7 +9,20 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "noUnusedLocals": false,
-    "allowJs": true
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "removeComments": true,
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["src/*"],
+      "pages/*": ["src/pages/*"],
+      "components/*": ["src/components/*"],
+      "layouts/*": ["src/layouts/*"],
+      "images/*": ["src/images/*"],
+      "ui/*": ["src/components/ui/*"],
+      "tslib": ["node_modules/tslib/tslib.d.ts"]
+    }
   },
   "exclude": ["node_modules", "public", ".cache"]
 }

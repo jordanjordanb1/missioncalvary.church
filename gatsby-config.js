@@ -1,3 +1,5 @@
+const pathJoin = require('path').join;
+
 module.exports = {
   siteMetadata: {
     title: `Mission Calvary Church`,
@@ -37,10 +39,29 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         pure: true,
       },
     },
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: pathJoin(__dirname, 'src'),
+        pages: pathJoin(__dirname, 'src/pages'),
+        components: pathJoin(__dirname, 'src/components'),
+        layouts: pathJoin(__dirname, 'src/layouts'),
+        images: pathJoin(__dirname, 'src/images'),
+        ui: pathJoin(__dirname, 'src/components/ui'),
+      },
+    },
   ],
-}
+};
