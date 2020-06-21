@@ -1,13 +1,13 @@
-import React from 'react'
-import Img from 'gatsby-image'
-import { graphql, useStaticQuery } from 'gatsby'
-import './CoverImage.scss'
+import React from 'react';
+import Img from 'gatsby-image';
+import { graphql, useStaticQuery } from 'gatsby';
+import './CoverImage.scss';
 
-interface CoverImageProps {
-  imgName: string
-}
+type CoverImageProps = {
+  readonly imgName: string;
+};
 
-export default function CoverImage({ imgName }: CoverImageProps) {
+const CoverImage: React.FC<CoverImageProps> = ({ imgName }): JSX.Element => {
   const data = useStaticQuery(graphql`
     {
       files: allFile(filter: { relativeDirectory: { eq: "jumbotron" } }) {
@@ -25,7 +25,7 @@ export default function CoverImage({ imgName }: CoverImageProps) {
         }
       }
     }
-  `)
+  `);
 
   return data.files.nodes.map((node: any) => {
     if (node.child.fluid.originalName === imgName) {
@@ -33,7 +33,9 @@ export default function CoverImage({ imgName }: CoverImageProps) {
         <div key={node.child.fluid.originalName} className="cover-image">
           <Img fluid={node.child.fluid} />
         </div>
-      )
+      );
     }
-  })
-}
+  });
+};
+
+export default React.memo(CoverImage);

@@ -1,40 +1,36 @@
-import React from 'react'
-import Layout from '../layouts/Layout'
-import SEO from '../components/shared/seo'
-import Section from '../components/shared/Section/Section'
+import React from 'react';
+import Layout from 'layouts/Layout';
+import SEO from 'ui/SEO';
+import Section from 'ui/Section/Section';
 
-const message = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-                perferendis temporibus commodi quidem magnam ullam corrupti
-                voluptas rerum, accusantium nihil expedita sit, velit eveniet
-                sequi quo? Recusandae temporibus consequuntur dolorum. Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Odit
-                perferendis temporibus commodi quidem magnam ullam corrupti
-                voluptas rerum, accusantium nihil expedita sit, velit eveniet
-                sequi quo? Recusandae temporibus consequuntur dolorum. Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Odit
-                perferendis temporibus commodi quidem magnam ullam corrupti
-                voluptas rerum, accusantium nihil expedita sit, velit eveniet
-                sequi quo? Recusandae temporibus consequuntur dolorum. Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Odit
-                perferendis temporibus commodi quidem magnam ullam corrupti
-                voluptas rerum, accusantium nihil expedita sit, velit eveniet
-                sequi quo? Recusandae temporibus consequuntur dolorum.`
+const message = `
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
+perferendis temporibus commodi quidem magnam ullam corrupti
+voluptas rerum, accusantium nihil expedita sit, velit eveniet
+sequi quo? Recusandae temporibus consequuntur dolorum. Lorem
+ipsum dolor sit amet consectetur adipisicing elit. Odit
+perferendis temporibus commodi quidem magnam ullam corrupti
+voluptas rerum, accusantium nihil expedita sit, velit eveniet
+sequi quo? Recusandae temporibus consequuntur dolorum. Lorem
+ipsum dolor sit amet consectetur adipisicing elit. Odit
+perferendis temporibus commodi quidem magnam ullam corrupti
+voluptas rerum, accusantium nihil expedita sit, velit eveniet
+sequi quo? Recusandae temporibus consequuntur dolorum. Lorem
+ipsum dolor sit amet consectetur adipisicing elit. Odit
+perferendis temporibus commodi quidem magnam ullam corrupti
+voluptas rerum, accusantium nihil expedita sit, velit eveniet
+sequi quo? Recusandae temporibus consequuntur dolorum.`;
 
-export default function AboutPage() {
-  return (
-    <Layout
-      type={'full'}
-      imgName={'aboutus.jpg'}
-      message={'About us'}
-      bibleVerse={'This is just about us'}
-    >
-      <SEO title="About" />
-      <Section
-        header="About us"
-        imgSrc="https://dummyimage.com/600x400/000/fff"
-        imgSide={'right'}
-        message={message}
-      />
-    </Layout>
-  )
-}
+const AboutPage: React.SFC = (): JSX.Element => (
+  <Layout type="full" imgName="aboutus.jpg" message="About us" bibleVerse="This is just about us">
+    <SEO title="About" />
+    <Section
+      header="About us"
+      imgSrc="https://dummyimage.com/600x400/000/fff"
+      imgSide="right"
+      message={message}
+    />
+  </Layout>
+);
+
+export default React.memo(AboutPage);
