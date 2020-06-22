@@ -2,7 +2,7 @@ import React from 'react';
 import { createGlobalStyle } from 'styled-components/macro';
 import reset from 'styled-reset-advanced';
 import Footer from 'ui/footer/Footer';
-import Header from 'ui/header/Header';
+import Navbar from './Navbar/Navbar';
 import Jumbotron from 'ui/Jumbotron/Jumbotron';
 import Container from '@material-ui/core/Container';
 
@@ -15,6 +15,7 @@ interface LayoutProps {
   readonly bibleVerse?: string;
   readonly bibleLocation?: string;
   readonly children: string | HTMLElement | JSX.Element | Array<HTMLElement | JSX.Element>;
+  readonly location: any;
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -53,22 +54,25 @@ const Layout: React.SFC<LayoutProps> = ({
   message,
   bibleVerse,
   bibleLocation,
-}): JSX.Element => (
-  <>
-    <GlobalStyle />
-    <Header />
-    <Container component="main">
-      <Jumbotron
-        type={type}
-        imgName={imgName}
-        message={message}
-        bibleVerse={bibleVerse}
-        bibleLocation={bibleLocation}
-      />
-      {children}
-    </Container>
-    <Footer />
-  </>
-);
+  location,
+}): JSX.Element => {
+  return (
+    <>
+      <GlobalStyle />
+      <Navbar pathname={location.pathname} elevation={0} />
+      <Container maxWidth={false} disableGutters component="main">
+        <Jumbotron
+          type={type}
+          imgName={imgName}
+          message={message}
+          bibleVerse={bibleVerse}
+          bibleLocation={bibleLocation}
+        />
+        {children}
+      </Container>
+      <Footer />
+    </>
+  );
+};
 
 export default React.memo(Layout);

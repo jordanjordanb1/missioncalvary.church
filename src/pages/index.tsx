@@ -24,8 +24,8 @@ const message = `
   sequi quo? Recusandae temporibus consequuntur dolorum.
 `;
 
-const IndexPage: React.SFC = (): JSX.Element => (
-  <Layout type="homepage">
+const IndexPage: React.SFC = ({ location }: any): JSX.Element => (
+  <Layout location={location} type="homepage">
     <SEO title="Home" />
     <Section
       header="Who are we?"

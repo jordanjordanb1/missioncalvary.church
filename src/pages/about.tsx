@@ -21,8 +21,14 @@ perferendis temporibus commodi quidem magnam ullam corrupti
 voluptas rerum, accusantium nihil expedita sit, velit eveniet
 sequi quo? Recusandae temporibus consequuntur dolorum.`;
 
-const AboutPage: React.SFC = (): JSX.Element => (
-  <Layout type="full" imgName="aboutus.jpg" message="About us" bibleVerse="This is just about us">
+const AboutPage: React.SFC = ({ location }: any): JSX.Element => (
+  <Layout
+    location={location}
+    type="full"
+    imgName="aboutus.jpg"
+    message="About us"
+    bibleVerse="This is just about us"
+  >
     <SEO title="About" />
     <Section
       header="About us"

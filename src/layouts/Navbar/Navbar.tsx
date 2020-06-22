@@ -1,29 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { Link, graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image';
-import Grid from '@material-ui/core/Grid';
+import NavItem from './Navitem/NavItem';
+import Branding from './Branding/Branding';
+import { StyledToolbar, StyledTabs, Nav } from './Navbar.style';
 
-/* FIXME:
-// 1. Navbar doesn't collapse on Link click
-*/
+type Position = 'absolute' | 'fixed' | 'relative' | 'static' | 'sticky';
 
-const Header: React.FC = (): JSX.Element => {
+type NavbarProps = {
+  readonly position?: Position;
+  readonly elevation: number;
+  readonly pathname: string;
+};
+
+const Navbar: React.FC<NavbarProps> = ({ position, elevation, pathname }): JSX.Element => {
   const data = useStaticQuery(graphql`
-      {
-        file(relativePath: { eq: "logo.png" }) {
-          sharp: childImageSharp {
-            fixed(width: 110) {
-              ...GatsbyImageSharpFixed_noBase64
-            }
+    {
+      file(relativePath: { eq: "logo.png" }) {
+        sharp: childImageSharp {
+          fixed(width: 110) {
+            ...GatsbyImageSharpFixed_noBase64
           }
         }
       }
-    `),
-    [background, setBackground] = useState('none'),
-    [navHeight, setNavHeight] = useState('100px'),
-    [textColor, setTextColor] = useState('rgb(255, 255, 255)'),
-    [navShadow, setNavShadow] = useState('5px 5px -2px 0 rgba(0,0,0,.3)'),
-    [scrolled, setScrolled] = useState(false);
+    }
+  `);
+  const [background, setBackground] = useState('none');
+  const [navHeight, setNavHeight] = useState('100px');
+  const [textColor, setTextColor] = useState('rgb(255, 255, 255)');
+  const [navShadow, setNavShadow] = useState('5px 5px -2px 0 rgba(0,0,0,.3)');
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     ['scroll', 'touchstart'].forEach(e =>
@@ -76,28 +82,22 @@ const Header: React.FC = (): JSX.Element => {
   });
 
   return (
-    <Grid
-      container
-      style={{ background, boxShadow: navShadow }}
-      className={!scrolled ? 'not-scrolled p-1' : 'p-1'}
-    >
-      <Link to="/" className="p-0" style={{ height: navHeight }}>
-        <Img fixed={data.file.sharp.fixed} alt="Mission Calvary Church's Logo" />
-      </Link>
+    <Nav component="nav" color="inherit" elevation={elevation}>
+      <StyledToolbar>
+        <Branding to="/">
+          <Img fixed={data.file.sharp.fixed} alt="Mission Calvary Church's Logo" />
+        </Branding>
 
-      <Link activeClassName="active" className="m-lg-2" style={{ color: textColor }} to="/">
-        Home
-      </Link>
+        <StyledTabs value={false}>
+          <NavItem pathname={pathname} to="/" text="home" />
 
-      <Link activeClassName="active" className="m-lg-2" style={{ color: textColor }} to="/about">
-        About
-      </Link>
+          <NavItem pathname={pathname} to="/about" text="about" />
 
-      <Link activeClassName="active" className="m-lg-2" style={{ color: textColor }} to="/contact">
-        Contact
-      </Link>
-    </Grid>
+          <NavItem pathname={pathname} to="/contact" text="contact" />
+        </StyledTabs>
+      </StyledToolbar>
+    </Nav>
   );
 };
 
-export default React.memo(Header);
+export default React.memo(Navbar);
