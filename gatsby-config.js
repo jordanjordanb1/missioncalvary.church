@@ -28,7 +28,6 @@ module.exports = {
         display: `minimal-ui`,
       },
     },
-    `gatsby-plugin-sass`,
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-web-font-loader`,

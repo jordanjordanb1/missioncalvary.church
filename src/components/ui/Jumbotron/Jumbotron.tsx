@@ -1,5 +1,4 @@
 import React from 'react';
-import './Jumbotron.scss';
 import Homepage from './Type/Homepage/Homepage';
 import Full from './Type/Full/Full';
 import Small from './Type/Small/Small';

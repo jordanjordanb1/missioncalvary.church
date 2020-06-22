@@ -1,8 +1,7 @@
 import React from 'react';
-import './Section.scss';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Image from './Image/Image';
+import Grid from '@material-ui/core/Grid';
+import styled from 'styled-components/macro';
 
 type SectionProps = {
   readonly header: string;
@@ -11,34 +10,53 @@ type SectionProps = {
   readonly message: string;
 };
 
-const Section: React.SFC<SectionProps> = ({ header, imgSrc, imgSide, message }): JSX.Element => (
-  <Row as="section" className="about" style={{ background: 'white' }}>
-    <Col
-      xs={{ span: '12', order: imgSide === 'left' ? 0 : 1 }}
-      lg={{ span: '4', order: imgSide === 'left' ? 0 : 1 }}
-    >
-      <Image imgSrc={imgSrc} />
-    </Col>
-    <Col
-      xs={{ span: '12', order: imgSide === 'left' ? 1 : 0 }}
-      lg={{ span: '8', order: imgSide === 'left' ? 1 : 0 }}
-      className="p-2 d-flex align-items-center text-center"
-    >
-      <div className="about-wrapper">
-        <Row noGutters>
-          <Col xs="12" lg={{ span: 6, offset: 3 }}>
-            <h1>{header}</h1>
-          </Col>
-        </Row>
+const SectionContainer = styled(Grid)`
+  h1 {
+    font-family: 'Lora', Georgia, serif;
+    line-height: 1.5;
+    font-weight: 600;
+    position: relative;
+    color: rgb(70, 70, 70);
 
-        <Row>
-          <Col xs="12" className="pr-5 pl-5">
-            <p>{message}</p>
-          </Col>
-        </Row>
+    &::before {
+      position: absolute;
+      top: 49%;
+      right: -170px;
+      content: '';
+      width: 50%;
+      height: 1px;
+      background: rgb(70, 70, 70);
+    }
+
+    &::after {
+      position: absolute;
+      top: 49%;
+      left: -180px;
+      content: '';
+      width: 50%;
+      height: 1px;
+      background: rgb(70, 70, 70);
+    }
+  }
+`;
+
+const Section: React.SFC<SectionProps> = ({ header, imgSrc, imgSide, message }): JSX.Element => (
+  <SectionContainer container className="about" style={{ background: 'white' }}>
+    <Grid item xs={12} lg={4}>
+      <Image imgSrc={imgSrc} />
+    </Grid>
+    <Grid container item xs={12} lg={8} className="p-2 d-flex align-items-center text-center">
+      <div className="about-wrapper">
+        <Grid xs={12} lg={6}>
+          <h1>{header}</h1>
+        </Grid>
+
+        <Grid xs={12} className="pr-5 pl-5">
+          <p>{message}</p>
+        </Grid>
       </div>
-    </Col>
-  </Row>
+    </Grid>
+  </SectionContainer>
 );
 
 export default React.memo(Section);

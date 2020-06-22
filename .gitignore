@@ -131,3 +131,5 @@ typings/
 .next
 
 .vscode/snipsnap.code-snippets
+
+./vscode

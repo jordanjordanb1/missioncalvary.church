@@ -1,9 +1,6 @@
 import React from 'react';
-import './Small.scss';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { default as JumbotronBootstrap } from 'react-bootstrap/Jumbotron';
+import Grid from '@material-ui/core/Grid';
+import styled from 'styled-components/macro';
 
 type SmallProps = {
   readonly message?: string;
@@ -11,45 +8,45 @@ type SmallProps = {
   readonly bibleLocation?: string;
 };
 
+const SmallGrid = styled(Grid)`
+  height: 500px !important;
+  background: #1d1c1c !important;
+  box-shadow: inset 0px -2px 5px -1px rgba(0, 0, 0, 0.4);
+`;
+
 const Small: React.SFC<SmallProps> = ({ message, bibleVerse, bibleLocation }) => (
-  <JumbotronBootstrap
-    fluid
+  <SmallGrid
+    container
     className="jumbotron-small d-flex justify-content-center align-items-center m-0"
   >
-    <Container>
-      <Row>
-        <Col className="text-center">
-          <h1 className="message">{message}</h1>
+    <Grid container item>
+      <h1 className="message">{message}</h1>
 
-          {bibleVerse ? (
-            <Row>
-              <Col xs="12" lg={{ span: 8, offset: 2 }}>
-                <blockquote className="blockquote">
-                  <p className="mb-0 text-center">{bibleVerse}</p>
-                  {bibleLocation ? (
-                    <footer className="blockquote-footer text-right">
-                      <cite
-                        className="mr-3"
-                        style={{
-                          color: 'rgba(255, 255, 255, 0.6)',
-                        }}
-                      >
-                        {bibleLocation}
-                      </cite>
-                    </footer>
-                  ) : (
-                    ''
-                  )}
-                </blockquote>
-              </Col>
-            </Row>
-          ) : (
-            ''
-          )}
-        </Col>
-      </Row>
-    </Container>
-  </JumbotronBootstrap>
+      {bibleVerse ? (
+        <Grid item xs={12} lg={8}>
+          <blockquote className="blockquote">
+            <p className="mb-0 text-center">{bibleVerse}</p>
+            {bibleLocation ? (
+              <footer className="blockquote-footer text-right">
+                <cite
+                  className="mr-3"
+                  style={{
+                    color: 'rgba(255, 255, 255, 0.6)',
+                  }}
+                >
+                  {bibleLocation}
+                </cite>
+              </footer>
+            ) : (
+              ''
+            )}
+          </blockquote>
+        </Grid>
+      ) : (
+        ''
+      )}
+    </Grid>
+  </SmallGrid>
 );
 
 export default React.memo(Small);

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
-import Button from 'react-bootstrap/Button';
-import FormGroup from 'react-bootstrap/FormGroup';
 import emailjs from 'emailjs-com';
 import InputGroup from './InputGroup/InputGroup';
+import FormControl from '@material-ui/core/FormControl';
+import Button from '@material-ui/core/Button';
 
 /* TODO:
 //  1: Add loading animation when sending form
@@ -103,11 +103,11 @@ const ContactForm: React.FC = (): JSX.Element => {
               rows={5}
             />
 
-            <FormGroup className="mb-4">
+            <FormControl className="mb-4">
               <Button type="submit" disabled={isSubmitting} className="p-2 pl-4 pr-4">
                 {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
               </Button>
-            </FormGroup>
+            </FormControl>
           </Form>
         )}
       </Formik>

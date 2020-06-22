@@ -1,15 +1,65 @@
-import React from 'react'
-import './Footer.scss'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import styled from 'styled-components/macro';
+
+const FooterContainer = styled.footer`
+  background-color: #1b1919;
+  height: auto;
+  min-height: 60px;
+  color: white;
+
+  &-left {
+    h2 {
+      font-size: 2em;
+      font-family: 'Great Vibes';
+      font-weight: 600;
+
+      span {
+        color: #ffd615;
+      }
+    }
+
+    a {
+      color: white;
+    }
+
+    .social-links {
+      a {
+        display: block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        color: #1b1919;
+        font-size: 1.5em;
+        transition: all 0.3s ease-in-out 0s;
+
+        &:hover,
+        &:focus {
+          background: rgba(255, 255, 255, 1);
+        }
+      }
+    }
+  }
+
+  &-right {
+    h2 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 1.5em;
+    }
+
+    p {
+      font-family: 'Lora', Georgia, serif;
+    }
+  }
+`;
 
 export default function Footer() {
   return (
-    <footer className="footer text-center p-5">
-      <Container>
-        <Row>
-          <Col xs="12" lg="6" className="footer-left">
+    <FooterContainer className="footer text-center p-5">
+      <Grid container>
+        <Grid container item>
+          <Grid item xs={12} lg={6} className="footer-left">
             <h2>
               <span>Mission Calvary</span> Church
             </h2>
@@ -63,49 +113,41 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </Col>
+          </Grid>
 
-          <Col xs="12" className="d-lg-none">
+          <Grid item xs={12} className="d-lg-none">
             <hr />
             <br />
-          </Col>
+          </Grid>
 
-          <Col xs="12" lg="6" className="footer-right">
+          <Grid item xs={12} lg={6} className="footer-right">
             <h2 className="mb-4">Service Hours</h2>
 
             <div>
               <p className="m-0">Sunday Service</p>
               <p style={{ color: '#ffd615' }}>6:30pm to 8:30pm</p>
             </div>
-          </Col>
-        </Row>
+          </Grid>
+        </Grid>
 
         <hr />
         <br />
 
-        <Row>
-          <Col xs="12" className="text-center">
-            <Row>
-              <Col xs="12" lg="6" className="text-lg-right p-0">
-                Copyright © {new Date().getFullYear()} All Rights Reserved
-              </Col>
+        <Grid container item>
+          <Grid item xs={12} lg={6} className="text-lg-right p-0">
+            Copyright © {new Date().getFullYear()} All Rights Reserved
+          </Grid>
 
-              <Col className="d-none d-lg-block p-0">|</Col>
+          <Grid className="d-none d-lg-block p-0">|</Grid>
 
-              <Col xs="12" lg="5" className="text-lg-left p-0">
-                Made with ❤️ by{' '}
-                <a
-                  href="https://jordanbarbosa.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Jordan Barbosa
-                </a>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
-    </footer>
-  )
+          <Grid xs={12} lg={5} className="text-lg-left p-0">
+            Made with ❤️ by{' '}
+            <a href="https://jordanbarbosa.com" target="_blank" rel="noopener noreferrer">
+              Jordan Barbosa
+            </a>
+          </Grid>
+        </Grid>
+      </Grid>
+    </FooterContainer>
+  );
 }

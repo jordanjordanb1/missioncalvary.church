@@ -1,10 +1,10 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components/macro';
 import reset from 'styled-reset-advanced';
-import Container from 'react-bootstrap/Container';
 import Footer from 'ui/footer/Footer';
 import Header from 'ui/header/Header';
 import Jumbotron from 'ui/Jumbotron/Jumbotron';
+import Container from '@material-ui/core/Container';
 
 type JumbotronType = 'full' | 'small' | 'homepage';
 
@@ -57,7 +57,7 @@ const Layout: React.SFC<LayoutProps> = ({
   <>
     <GlobalStyle />
     <Header />
-    <Container fluid as="main" className="p-0">
+    <Container component="main">
       <Jumbotron
         type={type}
         imgName={imgName}

@@ -1,9 +1,8 @@
 import React from 'react';
-import FormGroup from 'react-bootstrap/FormGroup';
-import Label from 'react-bootstrap/FormLabel';
-import Alert from 'react-bootstrap/Alert';
 import { Field, ErrorMessage } from 'formik';
-import './InputGroup.scss';
+import FormControl from '@material-ui/core/FormControl';
+import styled from 'styled-components/macro';
+import InputLabel from '@material-ui/core/InputLabel';
 
 type Type = 'text' | 'number' | 'tel' | 'textarea' | 'email' | 'number';
 
@@ -18,6 +17,56 @@ type InputGroupProps = {
   readonly rows?: number;
 };
 
+const StyledFormControl = styled(FormControl)`
+  input,
+  textarea {
+    color: black;
+    border: none;
+    border-radius: unset;
+    box-shadow: 3px 3px 2px -2px rgba(0, 0, 0, 0.3);
+
+    &:focus {
+      box-shadow: 4px 4px 2px -1px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  button {
+    border-radius: 0px;
+    border: none;
+    background: black;
+    font-size: 1.1em;
+    transition: all 0.3s ease-in-out 0s;
+
+    &:hover {
+      background: rgb(20, 20, 20);
+    }
+
+    &:active {
+      background: black !important;
+      box-shadow: none !important;
+    }
+
+    &:focus {
+      box-shadow: 4px 4px 2px -1px rgba(0, 0, 0, 0.3) !important;
+      background: white !important;
+      color: black !important;
+    }
+  }
+
+  .form-error {
+    border: none;
+    border-radius: 0px;
+    background: red;
+    color: white;
+    text-transform: uppercase;
+    opacity: 0;
+    min-height: 0;
+    box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.3);
+    animation: show 0.5s ease-in-out forwards;
+    overflow: hidden;
+  }
+`;
+
 const InputGroup: React.SFC<InputGroupProps> = ({
   type,
   value,
@@ -28,18 +77,14 @@ const InputGroup: React.SFC<InputGroupProps> = ({
   component,
   rows,
 }): JSX.Element => (
-  <FormGroup>
+  <StyledFormControl>
     <ErrorMessage name={`${formName}.${name}`}>
-      {msg => (
-        <Alert className="mb-3 form-error text-center" variant="danger">
-          {msg}
-        </Alert>
-      )}
+      {msg => <div className="mb-3 form-error text-center">{msg}</div>}
     </ErrorMessage>
 
-    <Label htmlFor={`${formName}.${name}`} className="sr-only">
+    <InputLabel htmlFor={`${formName}.${name}`} className="sr-only">
       {`${placeHolder}`}
-    </Label>
+    </InputLabel>
 
     <Field
       className="form-control"
@@ -52,7 +97,7 @@ const InputGroup: React.SFC<InputGroupProps> = ({
       component={component || 'input'}
       rows={rows}
     />
-  </FormGroup>
+  </StyledFormControl>
 );
 
 export default React.memo(InputGroup);

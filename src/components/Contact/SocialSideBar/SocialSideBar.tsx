@@ -1,8 +1,26 @@
 import React from 'react';
-import './SocialSideBar.scss';
+import styled from 'styled-components/macro';
+
+const SocialLinks = styled.ul`
+  a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #1b1919;
+    color: #ffffff;
+    font-size: 1.5em;
+    transition: all 0.3s ease-in-out 0s;
+
+    &:hover,
+    &:focus {
+      background: rgb(0, 0, 0);
+    }
+  }
+`;
 
 const SocialSideBar: React.SFC = (): JSX.Element => (
-  <ul className="text-center social-links">
+  <SocialLinks className="text-center social-links">
     <li className="list-inline-item m-2">
       <a
         href="http://"
@@ -11,7 +29,7 @@ const SocialSideBar: React.SFC = (): JSX.Element => (
         className="d-flex justify-content-center align-items-center"
       >
         <i className="fab fa-instagram"></i>
-        <span className="sr-only">Instagram</span>
+        <span aria-hidden="true">Instagram</span>
       </a>
     </li>
     <li className="list-inline-item m-2">
@@ -22,7 +40,7 @@ const SocialSideBar: React.SFC = (): JSX.Element => (
         className="d-flex justify-content-center align-items-center"
       >
         <i className="fab fa-facebook-f"></i>
-        <span className="sr-only">Facebook</span>
+        <span aria-hidden="true">Facebook</span>
       </a>
     </li>
     <li className="list-inline-item m-2">
@@ -31,10 +49,10 @@ const SocialSideBar: React.SFC = (): JSX.Element => (
         className="d-flex justify-content-center align-items-center"
       >
         <i className="fas fa-envelope"></i>
-        <span className="sr-only">Email</span>
+        <span aria-hidden="true">Email</span>
       </a>
     </li>
-  </ul>
+  </SocialLinks>
 );
 
 export default React.memo(SocialSideBar);
